@@ -1,0 +1,31 @@
+services:
+  demo:
+  wms:
+    versions: ["1.3.0"]
+    md: 
+      title: Canada Meteo Example
+caches:
+  canada_cache:
+    sources: [canada]
+    grids: [GLOBAL_GEODETIC]
+sources:
+  canada:
+    type: wms 
+    req:
+      url: https://geo.weather.gc.ca/geomet
+      layers: GDPS.ETA_TT
+      forward_req_params: ['time', 'dim_reference_time',]
+
+globals:
+
+layers:
+  - name: GDPS.ETA_TT
+    title: GDPS.ETA_TT - Global temperature
+    sources: [canada_cache]
+    dimensions:
+      time:
+        values: ["2020-03-28T00:00:00Z/2020-04-07T00:00:00Z/PT3H"]
+        default: "2020-03-28T12:00:00Z"
+      dim_reference_time:
+        values: ["2020-03-27T00:00:00Z/2020-03-28T00:00:00Z/PT12H"]
+        default: "2020-03-28T00:00:00Z"

@@ -1,0 +1,379 @@
+server:
+    bind:
+        host: 0.0.0.0
+        port: 5000
+    url: http://host:port/pygeoapi
+    basepath: /pygeoapi
+    mimetype: application/json; charset=UTF-8
+    encoding: utf-8
+    language: en-CA
+    # cors: true
+    pretty_print: true
+    limit: 500
+    # templates: /path/to/templates
+    map:
+        url: https://maps.wikimedia.org/osm-intl/{z}/{x}/{y}.png
+        attribution: '<a href="https://wikimediafoundation.org/wiki/Maps_Terms_of_Use">Wikimedia maps</a> | Map data &copy; <a href="https://openstreetmap.org/copyright">OpenStreetMap contributors</a>'
+
+logging:
+    level: ERROR
+    # logfile: /tmp/pygeoapi.log
+
+metadata:
+    identification:
+        title: MSC GeoMet - GeoMet-OGC-API
+        description: GeoMet-OGC-API provides public access to the Meteorological Service of Canada (MSC) and Environment and Climate Change Canada (ECCC) data via interoperable web services and application programming interfaces (API). Through open standards, users can freely and quickly access thousands of real-time and archived weather, climate and water datasets and products and integrate them in their domain-specific applications and decision support systems. Users can build mobile apps, create interactive web maps, and display and animate MSC data in desktop software. MSC GeoMet also enables on demand raw data clipping and reprojection, on demand format conversion and custom visualization.
+        keywords:
+            - Weather
+            - Meteorology
+            - Climate
+            - Forecasting
+            - Floods
+            - Weather alerts
+            - Storms
+            - Wind
+            - Temperature
+            - Precipitation
+            - Snow
+            - Ice
+        keywords_type: theme
+        terms_of_service: https://www.canada.ca/en/transparency/terms.html
+        url: https://eccc-msc.github.io/open-data/msc-geomet/readme_en/
+    license:
+        name: Environment and Climate Change Canada Data Server End-use Licence
+        url: https://eccc-msc.github.io/open-data/licence/readme_en/
+    provider:
+        name: Government of Canada, Environment and Climate Change Canada, Meteorological Service of Canada
+        url: https://www.canada.ca/en/services/environment/weather.html
+    contact:
+        name: Government of Canada, Environment and Climate Change Canada, Meteorological Service of Canada
+        position: Service Channel
+        address: 77 Westmorland Street, Suite 260
+        city: Fredericton
+        stateorprovince: New Brunswick
+        postalcode: E3B 6Z3
+        country: Canada
+        phone: None
+        fax: +01-506-451-6010
+        email: ec.ecweather-meteo.ec@canada.ca
+        url: https://weather.gc.ca/mainmenu/contact_us_e.html
+        hours: Monday to Friday, 1300h - 2100h UTC
+        instructions: During hours of service
+        role: pointOfContact
+
+resources:
+    hydrometric-stations:
+        type: collection
+        title: Hydrometric Monitoring Stations
+        description: A station is a site on a river or lake where water quantity (water level and flow) are collected and recorded.
+        keywords: [station, hydrometric station]
+        crs:
+            - CRS84
+        links:
+            - type: text/html
+              rel: canonical
+              title: Water Level and Flow - Environment Canada
+              href: https://wateroffice.ec.gc.ca
+              hreflang: en-CA
+            - type: text/html
+              rel: canonical
+              title: Niveau d'eau et débit - Environnement Canada
+              href: https://wateroffice.ec.gc.ca/index_f.html
+              hreflang: fr-CA
+            - type: text/html
+              rel: download
+              title: "National water data archive: HYDAT - Canada.ca"
+              href: https://www.canada.ca/en/environment-climate-change/services/water-overview/quantity/monitoring/survey/data-products-services/national-archive-hydat.html
+              hreflang: en-CA
+            - type: text/html
+              rel: download
+              title: "Archives nationales des données hydrologiques : HYDAT - Canada.ca"
+              href: https://www.canada.ca/fr/environnement-changement-climatique/services/eau-apercu/volume/surveillance/releves/produits-donnees-services/archives-nationales-hydat.html
+              hreflang: fr-CA
+            - type: application/zip
+              rel: download
+              title: download data
+              href: https://collaboration.cmc.ec.gc.ca/cmc/hydrometrics/www
+              hreflang: en-CA
+        extents:
+            spatial:
+                bbox: [-142, 52, -52, 84]
+                crs: http://www.opengis.net/def/crs/OGC/1.3/CRS84
+            temporal:
+                begin: 1850-01-01T00:00:00Z
+                end: null # or empty
+        providers:
+            - type: feature
+              default: true
+              name: Elasticsearch
+              data: http://localhost:9200/hydrometric_stations
+              id_field: IDENTIFIER
+
+    hydrometric-daily-mean:
+        type: collection
+        title: Daily Mean of Water Level or Flow
+        description: The daily mean is the average of all unit values for a given day.
+        keywords: [Daily, Daily Mean, Water Level, Flow, Discharge]
+        crs:
+            - CRS84
+        links:
+            - type: text/html
+              rel: canonical
+              title: Water Level and Flow - Environment Canada
+              href: https://wateroffice.ec.gc.ca
+              hreflang: en-CA
+            - type: text/html
+              rel: canonical
+              title: Niveau d'eau et débit - Environnement Canada
+              href: https://wateroffice.ec.gc.ca/index_f.html
+              hreflang: fr-CA
+            - type: text/html
+              rel: download
+              title: "National water data archive: HYDAT - Canada.ca"
+              href: https://www.canada.ca/en/environment-climate-change/services/water-overview/quantity/monitoring/survey/data-products-services/national-archive-hydat.html
+              hreflang: en-CA
+            - type: text/html
+              rel: download
+              title: "Archives nationales des données hydrologiques : HYDAT - Canada.ca"
+              href: https://www.canada.ca/fr/environnement-changement-climatique/services/eau-apercu/volume/surveillance/releves/produits-donnees-services/archives-nationales-hydat.html
+              hreflang: fr-CA
+            - type: application/zip
+              rel: download
+              title: download data
+              href: https://collaboration.cmc.ec.gc.ca/cmc/hydrometrics/www
+              hreflang: en-CA
+        extents:
+            spatial:
+                bbox: [-142, 52, -52, 84]
+                crs: http://www.opengis.net/def/crs/OGC/1.3/CRS84
+            temporal:
+                begin: 1850-01-01T00:00:00Z
+                end: null # or empty
+        providers:
+            - type: feature
+              default: true
+              name: Elasticsearch
+              data: http://localhost:9200/hydrometric_daily_mean
+              id_field: IDENTIFIER
+              time_field: DATE
+              properties:
+                  - IDENTIFIER
+                  - STATION_NAME
+                  - STATION_NUMBER
+                  - PROV_TERR_STATE_LOC
+                  - DATE
+                  - LEVEL
+                  - DISCHARGE
+                  - DISCHARGE_SYMBOL_EN
+                  - DISCHARGE_SYMBOL_FR
+                  - LEVEL_SYMBOL_EN
+                  - LEVEL_SYMBOL_FR
+
+    hydrometric-monthly-mean:
+        type: collection
+        title: Monthly Mean of Water Level or Flow
+        description: The monthly mean is the average of daily mean values for a given month.
+        keywords: [Monthly, Monthly Mean, Water Level, Flow, Discharge]
+        crs:
+            - CRS84
+        links:
+            - type: text/html
+              rel: canonical
+              title: Water Level and Flow - Environment Canada
+              href: https://wateroffice.ec.gc.ca
+              hreflang: en-CA
+            - type: text/html
+              rel: canonical
+              title: Niveau d'eau et débit - Environnement Canada
+              href: https://wateroffice.ec.gc.ca/index_f.html
+              hreflang: fr-CA
+            - type: text/html
+              rel: download
+              title: "National water data archive: HYDAT - Canada.ca"
+              href: https://www.canada.ca/en/environment-climate-change/services/water-overview/quantity/monitoring/survey/data-products-services/national-archive-hydat.html
+            - type: text/html
+              rel: download
+              title: "Archives nationales des données hydrologiques : HYDAT - Canada.ca"
+              href: https://www.canada.ca/fr/environnement-changement-climatique/services/eau-apercu/volume/surveillance/releves/produits-donnees-services/archives-nationales-hydat.html
+              hreflang: fr-CA
+            - type: application/zip
+              rel: download
+              title: download data
+              href: https://collaboration.cmc.ec.gc.ca/cmc/hydrometrics/www
+              hreflang: en-CA
+        extents:
+            spatial:
+                bbox: [-142, 52, -52, 84]
+                crs: http://www.opengis.net/def/crs/OGC/1.3/CRS84
+            temporal:
+                begin: 1850-01-01T00:00:00Z
+                end: null # or empty
+        providers:
+            - type: feature
+              default: true
+              name: Elasticsearch
+              data: http://localhost:9200/hydrometric_monthly_mean
+              id_field: IDENTIFIER
+              time_field: DATE
+              properties:
+                  - IDENTIFIER
+                  - STATION_NAME
+                  - STATION_NUMBER
+                  - PROV_TERR_STATE_LOC
+                  - DATE
+                  - MONTHLY_MEAN_LEVEL
+                  - MONTHLY_MEAN_DISCHARGE
+
+    hydrometric-annual-statistics:
+        type: collection
+        title: Annual Maximum and Minimum Daily Water Level or Flow
+        description: The annual maximum and minimum daily data are the maximum and minimum daily mean values for a given year.
+        keywords: [Annual maximum, Annual Minimum, Water Level, Flow, Discharge]
+        crs:
+            - CRS84
+        links:
+            - type: text/html
+              rel: canonical
+              title: Water Level and Flow - Environment Canada
+              href: https://wateroffice.ec.gc.ca
+              hreflang: en-CA
+            - type: text/html
+              rel: canonical
+              title: Niveau d'eau et débit - Environnement Canada
+              href: https://wateroffice.ec.gc.ca/index_f.html
+              hreflang: fr-CA
+            - type: text/html
+              rel: download
+              title: "National water data archive: HYDAT - Canada.ca"
+              href: https://www.canada.ca/en/environment-climate-change/services/water-overview/quantity/monitoring/survey/data-products-services/national-archive-hydat.html
+              hreflang: en-CA
+            - type: text/html
+              rel: download
+              title: "Archives nationales des données hydrologiques : HYDAT - Canada.ca"
+              href: https://www.canada.ca/fr/environnement-changement-climatique/services/eau-apercu/volume/surveillance/releves/produits-donnees-services/archives-nationales-hydat.html
+              hreflang: fr-CA
+            - type: application/zip
+              rel: download
+              title: download data
+              href: https://collaboration.cmc.ec.gc.ca/cmc/hydrometrics/www
+              hreflang: en-CA
+        extents:
+            spatial:
+                bbox: [-142, 52, -52, 84]
+                crs: http://www.opengis.net/def/crs/OGC/1.3/CRS84
+            temporal:
+                begin: 1850-01-01T00:00:00Z
+                end: null # or empty
+        providers:
+            - type: feature
+              default: true
+              name: Elasticsearch
+              data: http://localhost:9200/hydrometric_annual_statistics
+              id_field: IDENTIFIER
+              time_field: MAX_DATE
+              properties:
+                  - IDENTIFIER
+                  - STATION_NAME
+                  - STATION_NUMBER
+                  - PROV_TERR_STATE_LOC
+                  - DATA_TYPE_EN
+                  - DATA_TYPE_FR
+                  - MAX_DATE
+                  - MAX_SYMBOL_EN
+                  - MAX_SYMBOL_FR
+                  - MAX_VALUE
+                  - MIN_DATE
+                  - MIN_SYMBOL_EN
+                  - MIN_SYMBOL_FR
+                  - MIN_VALUE
+
+    hydrometric-annual-peaks:
+        type: collection
+        title: Annual Maximum and Minimum Instantaneous Water Level or Flow
+        description: The annual maximum and minimum instantaneous data are the maximum and minimum instantaneous values for a given year.
+        keywords: [Annual maximum, Annual Minimum, Water Level, Flow, Discharge]
+        crs:
+            - CRS84
+        links:
+            - type: text/html
+              rel: canonical
+              title: Water Level and Flow - Environment Canada
+              href: https://wateroffice.ec.gc.ca
+              hreflang: en-CA
+            - type: text/html
+              rel: canonical
+              title: Niveau d'eau et débit - Environnement Canada
+              href: https://wateroffice.ec.gc.ca/index_f.html
+              hreflang: fr-CA
+            - type: text/html
+              rel: download
+              title: "National water data archive: HYDAT - Canada.ca"
+              href: https://www.canada.ca/en/environment-climate-change/services/water-overview/quantity/monitoring/survey/data-products-services/national-archive-hydat.html
+              hreflang: en-CA
+            - type: text/html
+              rel: download
+              title: "Archives nationales des données hydrologiques : HYDAT - Canada.ca"
+              href: https://www.canada.ca/fr/environnement-changement-climatique/services/eau-apercu/volume/surveillance/releves/produits-donnees-services/archives-nationales-hydat.html
+              hreflang: fr-CA
+            - type: application/zip
+              rel: download
+              title: download data
+              href: https://collaboration.cmc.ec.gc.ca/cmc/hydrometrics/www
+              hreflang: en-CA
+        extents:
+            spatial:
+                bbox: [-142, 52, -52, 84]
+                crs: http://www.opengis.net/def/crs/OGC/1.3/CRS84
+            temporal:
+                begin: 1850-01-01T00:00:00Z
+                end: null # or empty
+        providers:
+            - type: feature
+              default: true
+              name: Elasticsearch
+              data: http://localhost:9200/hydrometric_annual_peaks
+              id_field: IDENTIFIER
+              time_field: DATE
+              properties:
+                  - DATE
+                  - IDENTIFIER
+                  - STATION_NAME
+                  - STATION_NUMBER
+                  - PROV_TERR_STATE_LOC
+                  - TIMEZONE_OFFSET
+                  - DATA_TYPE_EN
+                  - DATA_TYPE_FR
+                  - PEAK_CODE_EN
+                  - PEAK_CODE_FR
+                  - UNITS_EN
+                  - UNITS_FR
+                  - SYMBOL_EN
+                  - SYMBOL_FR
+                  - PEAK
+
+    gdps-temperature:
+        type: collection
+        title: Global Deterministic Prediction System sample
+        description: Global Deterministic Prediction System sample
+        keywords:
+            - gdps
+            - global
+        extents:
+            spatial:
+                bbox: [-180,-90,180,90]
+                crs: http://www.opengis.net/def/crs/OGC/1.3/CRS84
+        links:
+            - type: text/html
+              rel: canonical
+              title: information
+              href: https://eccc-msc.github.io/open-data/msc-data/nwp_gdps/readme_gdps_en
+              hreflang: en-CA
+        providers:
+            - type: coverage
+              name: rasterio
+              data: tests/data/GRIB2_FILENAME.grib2
+              options:
+                  DATA_ENCODING: COMPLEX_PACKING
+              format:
+                  name: GRIB2
+                  mimetype: application/x-grib2
