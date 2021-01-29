@@ -14,7 +14,7 @@ sources:
     req:
       url: https://geo.weather.gc.ca/geomet
       layers: GDPS.ETA_TT
-      forward_req_params: ['time', 'dim_reference_time',]
+    forward_req_params: ['time', 'dim_reference_time',]
 
 globals:
 

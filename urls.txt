@@ -1,0 +1,46 @@
+GeoMet requests for testing
+===========================
+
+OGC API - Features
+------------------
+http://localhost/pygeoapi/collections?f=json
+http://localhost/pygeoapi/collections/hydrometric-stations?f=json
+http://localhost/pygeoapi/collections/hydrometric-stations/items?sortby=IDENTIFIER&f=json
+http://localhost/pygeoapi/collections/hydrometric-stations/items?PROV_TERR_STATE_LOC=SK&f=json
+http://localhost/pygeoapi/collections/hydrometric-daily-mean/items?STATION_NUMBER=10NC001&f=json
+http://localhost/pygeoapi/collections/hydrometric-daily-mean/items?STATION_NUMBER=10NC001&datetime=1979-01-01/1981-01-01&f=json
+http://localhost/pygeoapi/collections/hydrometric-daily-mean/items?bbox=-80,40,-50,50&f=json
+http://localhost/pygeoapi/collections/hydrometric-monthly-mean/items?bbox=-80,40,-50,50&f=json
+http://localhost/pygeoapi/collections/hydrometric-annual-peaks/items?STATION_NUMBER=01AG003&sortby=DATA_TYPE_EN&f=json
+http://localhost/pygeoapi/collections/hydrometric-monthly-mean/items/09EA004.1979-09&f=json
+http://localhost/pygeoapi/collections/hydrometric-daily-mean/items?startindex=5000&limit=4&f=json
+
+OGC API - Coverages
+-------------------
+
+http://localhost/pygeoapi/collections/gdps-temperature/coverage/
+http://localhost/pygeoapi/collections/gdps-temperature/coverage/rangetype&f=json
+http://localhost/pygeoapi/collections/gdps-temperature/coverage/domainset&f=json
+http://localhost/pygeoapi/collections/gdps-temperature/coverage?rangeSubset=1&f=GRIB
+http://localhost/pygeoapi/collections/gdps-temperature/coverage?subset=Lat(5:10),Long(5:10)
+http://localhost/pygeoapi/collections/gdps-temperature/coverage?subset=Lat(5:10),Long(5:10)&f=GRIB
+http://localhost/pygeoapi/collections/gdps-temperature/coverage?bbox=-79,45,-75,49
+http://localhost/pygeoapi/collections/gdps-temperature/coverage?bbox=-79,45,-75,49&f=GRIB
+
+OGC WMS 1.3.0
+-------------
+
+http://localhost/mapproxy/service?service=WMS&version=1.3.0&request=GetCapabilities
+http://localhost/mapproxy/service?service=WMS&version=1.3.0&request=GetMap&width=800&height=600&format=image%2Fjpeg&transparent=TRUE&crs=EPSG%3A4326&bbox=49,-120,60,-110&layers=GDPS.ETA_TT&styles=
+http://localhost/mapproxy/service?service=WMS&version=1.3.0&request=GetMap&width=800&height=600&format=image%2Fjpeg&transparent=TRUE&crs=EPSG%3A4326&bbox=49,-110,60,-101.5&layers=GDPS.ETA_TT&styles=
+http://localhost/mapproxy/service?service=WMS&version=1.3.0&request=GetMap&width=800&height=600&format=image%2Fjpeg&transparent=TRUE&crs=EPSG%3A4326&bbox=45.9,-64.5,47,-62&layers=GDPS.ETA_TT&styles=
+http://localhost/mapproxy/service?service=WMS&version=1.3.0&request=GetMap&width=800&height=600&format=image%2Fjpeg&transparent=TRUE&crs=EPSG%3A4326&bbox=60,-136.5,79,-101.5&layers=GDPS.ETA_TT&styles=
+http://localhost/mapproxy/service?service=WMS&version=1.3.0&request=GetMap&width=800&height=600&format=image%2Fjpeg&transparent=TRUE&crs=EPSG%3A4326&bbox=49,-120,60,-110&layers=GDPS.ETA_TT&styles=
+http://localhost/mapproxy/service?service=WMS&version=1.3.0&request=GetMap&width=800&height=600&format=image%2Fjpeg&transparent=TRUE&crs=EPSG%3A4326&bbox=49,-110,60,-101.5&layers=GDPS.ETA_TT&styles=
+http://localhost/mapproxy/service?service=WMS&version=1.3.0&request=GetMap&width=800&height=600&format=image%2Fjpeg&transparent=TRUE&crs=EPSG%3A4326&bbox=45.9,-64.5,47,-62&layers=GDPS.ETA_TT&styles=
+http://localhost/mapproxy/service?service=WMS&version=1.3.0&request=GetMap&width=800&height=600&format=image%2Fjpeg&transparent=TRUE&crs=EPSG%3A4326&bbox=60,-136.5,79,-101.5&layers=GDPS.ETA_TT&styles=
+http://localhost/mapproxy/service?service=WMS&version=1.3.0&request=GetMap&width=800&height=600&format=image%2Fjpeg&transparent=TRUE&crs=EPSG%3A4326&bbox=47,-67.7,60,-52&layers=GDPS.ETA_TT&styles=
+http://localhost/mapproxy/service?service=WMS&version=1.3.0&request=GetMap&width=800&height=600&format=image%2Fjpeg&transparent=TRUE&crs=EPSG%3A4326&bbox=60,-136.5,79,-101.5&layers=GDPS.ETA_TT&styles=
+http://localhost/mapproxy/service?service=WMS&version=1.3.0&request=GetMap&width=800&height=600&format=image%2Fjpeg&transparent=TRUE&crs=EPSG%3A4326&bbox=45,9,-64.5,47,-62&layers=GDPS.ETA_TT&styles=
+http://localhost/mapproxy/service?service=WMS&version=1.3.0&request=GetMap&width=800&height=600&format=image%2Fjpeg&transparent=TRUE&crs=EPSG%3A4326&bbox=-90,-180,90,180&layers=GDPS.ETA_TT&styles=
+http://localhost/mapproxy/service?service=WMS&version=1.3.0&request=GetMap&width=800&height=600&format=image%2Fjpeg&transparent=TRUE&crs=EPSG%3A4326&bbox=60,-136.5,79,-101.5&layers=GDPS.ETA_TT&styles=
