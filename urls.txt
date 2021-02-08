@@ -12,7 +12,7 @@ http://localhost/pygeoapi/collections/hydrometric-daily-mean/items?STATION_NUMBE
 http://localhost/pygeoapi/collections/hydrometric-daily-mean/items?bbox=-80,40,-50,50&f=json
 http://localhost/pygeoapi/collections/hydrometric-monthly-mean/items?bbox=-80,40,-50,50&f=json
 http://localhost/pygeoapi/collections/hydrometric-annual-peaks/items?STATION_NUMBER=01AG003&sortby=DATA_TYPE_EN&f=json
-http://localhost/pygeoapi/collections/hydrometric-monthly-mean/items/09EA004.1979-09&f=json
+http://localhost/pygeoapi/collections/hydrometric-monthly-mean/items/09EA004.1979-09?f=json
 http://localhost/pygeoapi/collections/hydrometric-daily-mean/items?startindex=5000&limit=4&f=json
 
 OGC API - Coverages
