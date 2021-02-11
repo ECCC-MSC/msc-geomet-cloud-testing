@@ -19,8 +19,8 @@ OGC API - Coverages
 -------------------
 
 http://localhost/pygeoapi/collections/gdps-temperature/coverage/
-http://localhost/pygeoapi/collections/gdps-temperature/coverage/rangetype&f=json
-http://localhost/pygeoapi/collections/gdps-temperature/coverage/domainset&f=json
+http://localhost/pygeoapi/collections/gdps-temperature/rangetype&f=json
+http://localhost/pygeoapi/collections/gdps-temperature/domainset&f=json
 http://localhost/pygeoapi/collections/gdps-temperature/coverage?rangeSubset=1&f=GRIB
 http://localhost/pygeoapi/collections/gdps-temperature/coverage?subset=Lat(5:10),Long(5:10)
 http://localhost/pygeoapi/collections/gdps-temperature/coverage?subset=Lat(5:10),Long(5:10)&f=GRIB
